@@ -19,7 +19,9 @@ For this purpose it is necessary to:
 5) Create a machine learning model that will highlight and classify punches
 6) Test and analyze the results
 
-You can see the solution to all these tasks in my presentation (Rudchyk_Boxing_Punch_Classif_ENG). Later in the README we will talk about filling the repository (Contents of jupyter notebook and сollected dataset).
+**You can see the solution to all these tasks in my presentation (Rudchyk_Boxing_Punch_Classif_ENG)**. 
+
+Later in the README we will talk about filling the repository (Contents of jupyter notebook and сollected dataset).
 ## Contents of the repository
 Files:
 - boxing_punches_classification_final.ipynb, This is a ready-made notebook that takes a recording file, then filters the data, looks for punches in the recording and classifies them.
@@ -33,36 +35,58 @@ Folders:
 - model, Models for classification and detection have already been trained. There are several punches classification models,CatBoost worked best on my test data.
 
 ## About the dataset
-### Збір даних
-У моєму випадку збір даних виконувався телефоном прив'язаним до руку в місці, де повинен бути браслет (пробував тримати телефон в долоні екраном в руку, все продовжувало працювати).
-Дані записувались за допомогою додатку Accelerometer Meter (ви його можете знайти в Google Play) на налаштуваннях (в розділі Graph) позначених на малюнку.
+### Data collection
+Data collection was performed with a phone (accelerometer + gyroscope) in the boxer's hand.
+Position: in the hand, perpendicular to the fingers, the screen towards you, the camera towards the thumb.
+The data was recorded using the Accelerometer Meter application (you can find it in Google Play) at the settings (in the Graph section) marked in the figure.
 
 <img src="app_settings.jpg" width="350" height="300" />
 
-Тобто модель використовує значення датчика в 	$m/s^{2}$ та при частоті 200 Гц.
+That is, the model uses sensor values in $m/s^{2}$ and with frequency of 200 Hz.
+
+We have 9 (7+2 only test) professional fighters with a well placed punch in the data collection.
+
+There are 2 types of records:
+Systems of successive separate clean strokes of different speeds and made by different hands. It is the train + test data. A total of 33 recordings (550 punches).
+
+A shadow fight in which boxers could move freely, use counters and parry, only 3 types of punches could be used. It is the fight data. A total of 15 recordings (12 min, 250 punches).
 
 ### Train data
-У зборі тренувального дата сета брали участь 4 молоді та здорові людини різних спортивних категорій, 10 + 9 + 8 + 5 в цілому 33 записи. 
-По технічній частині збору даних описано вище.
-Тренувальний запис мав такий формат:
-1. 5 секунд спокою
-2. 15 секунд махів руками
-3. 10 сек відпочинку
-4. 15 сек присідань
-5. 10 сек відпочинку
-6. 15 сек ударів руками
-7. 5 сек спокою
+The train record has the following format:
+1. 5 seconds of rest
+2. 5 jabs
+3. 5 seconds of rest
+4. 5 uppercuts
+5. 5 seconds of rest
+6. 5 hooks
+7. 5 seconds of rest
 
-У половині файлів під час спокою та відпочинку потрібно було тримати руки майже нерухомо, у половині можна було спокійно рухатись та виконувати інші дії (почесати спину та тд).
+
+After each punch there is a 2 second rest so that we can easily separate the punches.
+
+The files include recordings of slow and fast punches, also recordings of left and right handed punches.
+
+P.S. Several files have the format of 2-5 jabs, 10 uppercuts and 10 hooks. In such cases, see the markup file.
+
 ### Test data
-У нас є 8 спеціально відзнятих файли для тесту (те що модель ні одного разу на них не промахнулась, це просто співпало), щоб перевірити всі можливі варіанти звіту та роботу алгоритму.
-1. test1_standard - формат дій як і в трейні, виконаний людиною, дані якої є в трейні. (15 сек махів (в майбут. 15 м), 15 сек присідань (15 п), 15 сек ударів (15 у)).
-2. test2_standard_other - формат дій як і в трейні, виконаний людиною, даних якої не має трейні. (15 м, 15 п, 15 у).
-3. test3_stress - великий набір вправ у хаотичному порядку ранодомного часу. (10п, 20у, 15м, 10м, 8м, 10у, 12п, 10у, 10м), людини не має в трейні.
-4. test4_not_full_squatting - не виконані всі присідання (15м, 15у, 5п), можна побачити, як алгоритм робить помилки, але основну задачу все таки виконує.
-5. test5_only_hits - присутні тільки удари в повному обсязі (15у).
-6. test6_not_squatting - повні удари, не всі махи, немає присідань (15у, 5м).
-7. test7_only_not_full_rotation - тільки не повні махи (10м).
-8. test8_error_file - файл з пошкодженою частою та середнім прискоренням, для перевірки частини пошуку помилок, (7м, 7у).
+The train record has the following format:
+1. 5 seconds of rest
+2. 2 jabs (slow + fast)
+3. 5 seconds of rest
+4. 2 uppercuts (slow + fast)
+5. 5 seconds of rest
+6. 2 hooks (slow + fast)
+7. 5 seconds of rest
 
-P.S. Відхилення часу дій в звітах від зазначених здебільшого помилка людини, яка виконувала дію невірний час, а не помилка алгоритму.
+After each punch there is a 2 second rest so that we can easily separate the punches.
+
+The files include recordings of left and right handed punches.
+
+### Fight data
+
+The fight record has a shadow fight in which boxers could move freely, use counters and parry, only 3 types of punches could be used. It was a really free and real shadow fight.
+
+Boxers beat only with the hand that had the phone in it.
+
+Since the boxer did not perform the exact exercise, the data was marked on video recordings.
+
