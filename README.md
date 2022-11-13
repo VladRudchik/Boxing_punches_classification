@@ -8,13 +8,13 @@ Boxing punches сlassification during a training fight using data science. Also,
 
 ## Formulation of the problem
 ### Task:
-Create a system that will detect and classify the boxer's punches during training (training fight and individual punches).
+Make a system that will detect and classify the boxer's punches during training (training fight and individual punches).
 
 For this purpose it is necessary to:
 
 1) Come up with a system with which you will collect data
 2) Collect dataset
-3) Analyze the data obtained
+3) Analyze the obtained data
 4) Complete the data processing
 5) Create a machine learning model that will detect and classify punches
 6) Test and analyze the results
