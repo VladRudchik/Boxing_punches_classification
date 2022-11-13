@@ -1,5 +1,5 @@
 # Boxing_punches_classification
-Boxing punches сlassification during a training fight using data science. Also, the resulting algorithm can be used to classify individual strokes.
+Boxing punches сlassification during a training fight using data science. Also, the resulting algorithm can be used to classify individual punches.
 ## Contents
 
 - [Formulation of the problem](#formulation-of-the-problem)
@@ -8,7 +8,7 @@ Boxing punches сlassification during a training fight using data science. Also,
 
 ## Formulation of the problem
 ### Task:
-Create a system that will highlight and classify the boxer's punches during training (training combat and individual punches).
+Create a system that will detect and classify the boxer's punches during training (training fight and individual punches).
 
 For this purpose it is necessary to:
 
@@ -16,7 +16,7 @@ For this purpose it is necessary to:
 2) Collect dataset
 3) Analyze the data obtained
 4) Complete the data processing
-5) Create a machine learning model that will highlight and classify punches
+5) Create a machine learning model that will detect and classify punches
 6) Test and analyze the results
 
 **You can see the solution to all these tasks in my presentation (Rudchyk_Boxing_Punch_Classif_ENG)**. 
@@ -24,7 +24,7 @@ For this purpose it is necessary to:
 Later in the README we will talk about filling the repository (Contents of jupyter notebook and сollected dataset).
 ## Contents of the repository
 Files:
-- boxing_punches_classification_final.ipynb, This is a ready-made notebook that takes a recording file, then filters the data, looks for punches in the recording and classifies them.
+- boxing_punches_classification_final.ipynb, This is a ready-made notebook that takes a recording file, then filters the data, detect punches in the recording and classifies them.
 - boxing_punches_classification_markup.ipynb, The file that contains dataset markup indexes.
 - Rudchyk_Boxing_Punch_Classif_ENG.pptx, A presentation in which all stages of solving the problem are shown in detail.
 - Rudchyk_Boxing_Punch_Classif_UA.pptx, Презентація, що зазначена вище, але на українській мові, можливо комусь буде набагато зручніше). Обережно, там немає декількох правок які були внесені в Англ варіант, тому краще орієнтуватись на нього.
@@ -32,7 +32,7 @@ Files:
 
 Folders:
 - data, The collected dataset is divided into 3 folders, test and training data for the punches classification model, and training fight records for the punches detection model.
-- model, Models for classification and detection have already been trained. There are several punches classification models,CatBoost worked best on my test data.
+- model, Models for classification and detection have already been trained. There are several punches classification models, CatBoost worked best on my test data.
 
 ## About the dataset
 ### Data collection
@@ -47,9 +47,9 @@ That is, the model uses sensor values in $m/s^{2}$ and with frequency of 200 Hz.
 We have 9 (7+2 only test) professional fighters with a well placed punch in the data collection.
 
 There are 2 types of records:
-Systems of successive separate clean strokes of different speeds and made by different hands. It is the train + test data. A total of 33 recordings (550 punches).
+Systems of successive separate clean punches of different speeds and made by different hands. It is the Train(#train-data) + the Test(#test-data) data. A total of 33 recordings (550 punches).
 
-A shadow fight in which boxers could move freely, use counters and parry, only 3 types of punches could be used. It is the fight data. A total of 15 recordings (12 min, 250 punches).
+A shadow fight in which boxers could move freely, use counters and parry, only 3 types of punches could be used. It is the Fight(#fight-data) data. A total of 15 recordings (12 min, 250 punches).
 
 ### Train data
 The train record has the following format:
