@@ -47,9 +47,9 @@ That is, the model uses sensor values in $m/s^{2}$ and with frequency of 200 Hz.
 We have 9 (7+2 only test) professional fighters with a well placed punch in the data collection.
 
 There are 2 types of records:
-Systems of successive separate clean punches of different speeds and made by different hands. It is the Train(#train-data) + the Test(#test-data) data. A total of 33 recordings (550 punches).
+Systems of successive separate clean punches of different speeds and made by different hands. It is [the Train](#train-data) + [the Test](#test-data) data. A total of 33 recordings (550 punches).
 
-A shadow fight in which boxers could move freely, use counters and parry, only 3 types of punches could be used. It is the Fight(#fight-data) data. A total of 15 recordings (12 min, 250 punches).
+A shadow fight in which boxers could move freely, use counters and parry, only 3 types of punches could be used. It is [the Fight](#fight-data) data. A total of 15 recordings (12 min, 250 punches).
 
 ### Train data
 The train record has the following format:
@@ -69,7 +69,7 @@ The files include recordings of slow and fast punches, also recordings of left a
 P.S. Several files have the format of 2-5 jabs, 10 uppercuts and 10 hooks. In such cases, see the markup file.
 
 ### Test data
-The train record has the following format:
+The test record has the following format:
 1. 5 seconds of rest
 2. 2 jabs (slow + fast)
 3. 5 seconds of rest
