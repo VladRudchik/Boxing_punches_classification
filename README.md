@@ -21,20 +21,16 @@ For this purpose it is necessary to:
 
 You can see the solution to all these tasks in my presentation (Rudchyk_Boxing_Punch_Classif_ENG). Later in the README we will talk about filling the repository (Contents of jupyter notebook and сollected dataset).
 ## Contents of the repository
-Файли:
-- fitness_workbook.ipynb, Це мій робочий ноутбук в якому записаний процес аналізу даних, підбору фільтрів, процес вибору фічей для моделей, підбор моделей та аргументація їх використання, також там є графіки, на які я дивився під час роботи, та основні думки, які в мене виникали. Нажаль, так як це робочий ноутбук, то він не дуже чисто оформлений(
-- fitness_final.ipynb, Це готовий ноутбук, який забирає останній файл з тестової папки (неначе це тільки що отриманий файл), проводить його перевірку на коректність, проводить фільтрацію, розбиває сигнал на окремі вправи, класифікує їх та видає кінцеві звіти.
-- fitness_final_one.ipynb, Це той самий fitness_final.ipynb, але зібраний в одній клітині та без коментарів, він створений для того щоб вибрати файл, натиснути одну кнопку та отримати звіти.
+Files:
+- boxing_punches_classification_final.ipynb, This is a ready-made notebook that takes a recording file, then filters the data, looks for punches in the recording and classifies them.
+- boxing_punches_classification_markup.ipynb, The file that contains dataset markup indexes.
+- Rudchyk_Boxing_Punch_Classif_ENG.pptx, A presentation in which all stages of solving the problem are shown in detail.
+- Rudchyk_Boxing_Punch_Classif_UA.pptx, Презентація, що зазначена вище, але на українській мові, можливо комусь буде набагато зручніше). Обережно, там немає декількох правок які були внесені в Англ варіант, тому краще орієнтуватись на нього.
+- boxing_punches_classification_workbook.ipynb, This is my workbook, which records the process of data analysis, selection of filters, search for features for models, selection of models and arguments for their use. There are also graphs I looked at while working and the main thoughts I had. Unfortunately, since this is a workbook, it is not very cleanly designed(. P.S. It's not very interesting and informative, but it might help if you want to use the dataset I've collected.
 
-Папки:
-- Fitness report, Папка в яку потрапляють звіти тренувань після виконання коду. (В ній вже є 8 звітів, для 8 тестових файлів з тестової папки, вони з підписом old)
-- Error report, Папка в яку потрапляють звіти помилок, якщо файл поданий в модель не відповідає певним умовам. (Аналогічно там вже є файл приклад з підписом old)
-- Graphs, Папка з візуалізаціями предіктів моделі до тестових даних.
-- test_file, Папка з тестовими даними
-- models, Папка з моделями, які я отримав під час роботи.
-- train_file, Папка з файлами, які використовувались для навчання моделі.
-- error_file, Папка з зіпсованими фалами, їх відловила система пошуку помилок під час тренування моделі.
-- Error report train, Папка з звітами до файлів зазначених в error_file.
+Folders:
+- data, The collected dataset is divided into 3 folders, test and training data for the punches classification model, and training fight records for the punches detection model.
+- model, Models for classification and detection have already been trained. There are several punches classification models,CatBoost worked best on my test data.
 
 ## About the dataset
 ### Збір даних
@@ -43,7 +39,7 @@ You can see the solution to all these tasks in my presentation (Rudchyk_Boxing_P
 
 <img src="app_settings.jpg" width="350" height="300" />
 
-Тобто модель використовує значення датчика в 	$m/s^{2}$ та при частоті 50 Гц (я пробував змінювати частоти (там довга історія з спробами переписати цей додаток для автоматизації збору даних) в діапазоні від 5 - 300 Гц, якщо частота менше 30 Гц алгоритм починає працювати погано, а при частотах більше 100 Гц потрібно змінити розмір вікна на етапі виділення активних зон і алгоритм продовжить працювати гарно, в іншому випадку будуть помилки).
+Тобто модель використовує значення датчика в 	$m/s^{2}$ та при частоті 200 Гц.
 
 ### Train data
 У зборі тренувального дата сета брали участь 4 молоді та здорові людини різних спортивних категорій, 10 + 9 + 8 + 5 в цілому 33 записи. 
